@@ -1,0 +1,74 @@
+/* ***** Menu Styling ****** */
+.menu {
+    background-color: #b57f50;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    height: 100px;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: flex-start; /* Aligns all items in the menu container to the top */
+    position: relative; /* Allows the logo to be positioned relative to the menu */
+    margin-bottom: 100px;
+  }
+  
+  .menu .logo {
+    height: 120px; /* Make the logo large enough to extend */
+    width: auto;
+    margin-right: 20px; /* Space between logo and menu items */
+    margin-left: 100px;
+    position: absolute; /* Position it independently */
+    bottom: -20px; /* Move the logo down to extend below the menu bar */
+    left: 20px; /* Align the logo with the left side of the menu */
+    z-index: 1; /* Ensure the logo is above the menu bar */
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-start; /* Aligns menu items to the top */
+    margin-left: auto; /* Pushes the menu items to the right */
+  }
+  
+  .menu li {
+    margin: 0 0px;
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* Ensures individual items align to the top */
+  }
+  
+  .menu li:not(:last-child) {
+    border-right: 1px solid white; /* Adds divider between items */
+    padding-right: 15px; /* Space after the divider */
+    margin-right: 15px; /* Space before the next item */
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .menu a:hover {
+    color: #ffa500;
+  }
+  
+  .logout-btn {
+    background: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logout-btn:hover {
+    color: blue;
+  }
+  
+  
+  
