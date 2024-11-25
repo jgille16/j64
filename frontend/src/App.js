@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 /* This function returns conditional components that are to be included in the Router tag */
 function AppContent() {
-
   const location = useLocation();
 
   return (
