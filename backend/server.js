@@ -94,23 +94,24 @@ const uri = "mongodb+srv://jgille16:opk25ZkWjaq4Vo1x@mongoj64.ynetd.mongodb.net/
 
 const client = new MongoClient(uri);
 
+
+// ************  Endpoint for Summary Page
 app.get('/api/siteData', async (req, res) => {
     await client.connect(); 
     const database = client.db('CovidFluData');
     const collection = database.collection('Sites');
   
-    // Fetch all documents from the budget collection
     const siteData = await collection.find({}).toArray();
     res.json({ siteChart: siteData });
     await client.close();
   });
 
+// ************  Endpoint for Reports Page
   app.get('/api/patientData', async (req, res) => {
     await client.connect(); 
     const database = client.db('CovidFluData');
     const collection = database.collection('Patients');
   
-    // Fetch all documents from the budget collection
     const patientData = await collection.find({}).toArray();
     res.json({ patientChart: patientData });
     await client.close();
