@@ -70,7 +70,7 @@
 
 
 /* ************Gradient Background **************/
-body {
+/* body {
     background: linear-gradient(206deg, #b78152, #363d29);
     background-size: 400% 400%;
     animation: Gradient 8s ease infinite;
@@ -81,4 +81,4 @@ body {
     50%{background-position:100% 43%}
     100%{background-position:0% 58%}
 }
-  
+   */

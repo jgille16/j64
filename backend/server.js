@@ -3,6 +3,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const { expressjwt: exjwt } = require('express-jwt');
+const { MongoClient } = require('mongodb');
 
 const app = express();
 const port = 3000;
@@ -20,7 +21,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-// ---------------------------------
+// ------------- AUTHENTICATION --------------------
 
 let users = [
     {
@@ -30,12 +31,11 @@ let users = [
     },
     {
         id: 2,
-        username: 'fabio',
-        password: 'fabio'
+        username: 'jessica',
+        password: 'jessica'
     },
 ]
 
-// ---------------------------------
 
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
@@ -45,7 +45,7 @@ app.post('/api/login', (req, res) => {
 
     if (user) {
         // User found
-        const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '2m' });
+        const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '1h' });
         res.json({
             success: true,
             err: null,
@@ -62,9 +62,15 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/dashboard', jwtMWare, (req, res) => {
-    res.json({
-        success: true,
-    });
+    res.json({ success: true});
+});
+
+app.get('/api/summary', jwtMWare, (req, res) => {
+    res.json({ success: true });
+});
+
+app.get('/api/reports', jwtMWare, (req, res) => {
+    res.json({ success: true });
 });
 
 
@@ -81,6 +87,36 @@ app.use(function (err, req, res, next) {
         next(err);
     }
 });
+
+// ------------- DATABASE --------------------
+
+const uri = "mongodb+srv://jgille16:opk25ZkWjaq4Vo1x@mongoj64.ynetd.mongodb.net/?retryWrites=true&w=majority&appName=mongoj64";
+
+const client = new MongoClient(uri);
+
+app.get('/api/siteData', async (req, res) => {
+    await client.connect(); 
+    const database = client.db('CovidFluData');
+    const collection = database.collection('Sites');
+  
+    // Fetch all documents from the budget collection
+    const siteData = await collection.find({}).toArray();
+    res.json({ siteChart: siteData });
+    await client.close();
+  });
+
+  app.get('/api/patientData', async (req, res) => {
+    await client.connect(); 
+    const database = client.db('CovidFluData');
+    const collection = database.collection('Patients');
+  
+    // Fetch all documents from the budget collection
+    const patientData = await collection.find({}).toArray();
+    res.json({ patientChart: patientData });
+    await client.close();
+  });
+
+
 
 app.listen(port, () => {
     console.log(`API served at http://localhost:${port}`)

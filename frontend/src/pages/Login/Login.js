@@ -1,10 +1,12 @@
 import './Login.css';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate(); // Use navigate for redirection
     
     const handleLogin = (event) => {
         event.preventDefault();
@@ -16,14 +18,19 @@ function Login() {
     
         axios
             .post('http://localhost:3000/api/login', data)
+            // Valid credentials
             .then((res) => {
-                console.log('Login successful:', res.data);
-                setErrorMessage(''); // Clear any previous error
+                if (res.data.success) {
+                    console.log('Login successful:', res.data);
+                    localStorage.setItem('token', res.data.tokenValue); // Store the token
+                    setErrorMessage(''); // Clear any previous error
+                    navigate('/'); // Redirect to dashboard
+                }
             })
+            // Invalid credentials
             .catch((error) => {
                 if (error.response) {
-                    // Invalid credentials
-                    setErrorMessage(error.response.data.err); // Display server-provided error message
+                    setErrorMessage(error.response.data.err); // Display the server-provided error message
                 }
             });
     };

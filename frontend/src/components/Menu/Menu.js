@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Menu.css';
 
 function Menu() {
+    const navigate = useNavigate();
 
     const handleLogout = () => {
-        console.log("User logged out!");
-        // Add your logout logic here, such as clearing user data or redirecting
+        localStorage.removeItem('token');
+        navigate('/login');
     };
 
 
