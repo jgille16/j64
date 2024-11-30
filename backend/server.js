@@ -120,19 +120,6 @@ app.get('/api/siteData', async (req, res) => {
 
 
 
-//  ------------- SERVING --------------------
-const path = require('path');
-
-// Serve the React app's static files
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-// Catch-all route to serve React's index.html for any unmatched routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
-
-
-
 
 app.listen(port, () => {
     console.log(`API served at http://localhost:${port}`)
