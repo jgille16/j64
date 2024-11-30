@@ -45,7 +45,7 @@ app.post('/api/login', (req, res) => {
 
     if (user) {
         // User found
-        const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '3m' });
         res.json({
             success: true,
             err: null,
@@ -116,6 +116,21 @@ app.get('/api/siteData', async (req, res) => {
     res.json({ patientChart: patientData });
     await client.close();
   });
+
+
+
+
+//  ------------- SERVING --------------------
+const path = require('path');
+
+// Serve the React app's static files
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Catch-all route to serve React's index.html for any unmatched routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
+
 
 
 

@@ -66,5 +66,3 @@ const ChartJSPieChart = ({ apiEndpoint, dataPoint }) => {
 };
 
 export default ChartJSPieChart;
-
-{/* <div style={{ width: '25%', margin: 'auto' }}></div> */}
