@@ -5,13 +5,13 @@ function Reports() {
       <div className='reportCharts'>
         <div>
           <h1>Number of Patients (Flu)</h1>
-          <D3BarChart apiEndpoint="http://localhost:3000/api/patientData" dataPoint="flu" />
+          <D3BarChart apiEndpoint="http://3.137.221.0/api/patientData" dataPoint="flu" />
           <p>This graph depicts the number of Flu patients that participated in the study by country. The data behind this chart can be found in the source article (Table 1 - column 4)</p>
         </div>
 
         <div>
           <h1>Number of Patients (Covid)</h1>
-          <D3BarChart apiEndpoint="http://localhost:3000/api/patientData" dataPoint="covid" />
+          <D3BarChart apiEndpoint="http://3.137.221.0/api/patientData" dataPoint="covid" />
           <p>This graph depicts the number of Covid patients that participated in the study by country. The data behind this chart can be found in the source article (Table 1 - column 3)</p>
         </div>
 

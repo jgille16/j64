@@ -17,7 +17,7 @@ function Login() {
         };
     
         axios
-            .post('http://localhost:3000/api/login', data)
+            .post('http://3.137.221.0/api/login', data)
             // Valid credentials
             .then((res) => {
                 if (res.data.success) {
