@@ -16,7 +16,7 @@ function Reports() {
         </div>
 
         <br></br>
-        <p>Both of these graphs were built with a reuseable component named D3BarChart, which uses NodeJS D3. This component is added to the Reports Page twice. Each instance of the D3BarChart Component uses an api Endpoint and dataPoint parameter to customize the different graphs. </p>
+        <p>Both of these graphs were built with a reuseable component named RechartsBarChart, which uses NodeJS Rechart. This component is added to the Reports Page twice. Each instance of the RechartsBarChart Component uses an api Endpoint and dataPoint parameter to customize the different graphs. </p>
       </div>
     );
   }

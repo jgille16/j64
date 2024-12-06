@@ -46,14 +46,14 @@ function Login() {
 
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
-                    <input type="username" id="username" placeholder="Enter your username"/>
+                    <input type="username" id="username" placeholder="Enter your username" aria-label="Enter your username"/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password"/>
+                    <input type="password" id="password" placeholder="Enter your password" aria-label="Enter your password"/>
                 </div>
 
-                <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
+                <button type="submit" className="login-button" onClick={handleLogin} aria-label="Submit the login form">Login</button>
             </form>
         </div>
     );
