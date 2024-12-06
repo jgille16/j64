@@ -13,12 +13,12 @@
   }
   
   .menu .logo {
-    height: 120px; /* Make the logo large enough to extend */
+    height: 110px; /* Make the logo large enough to extend */
     width: auto;
     margin-right: 20px; /* Space between logo and menu items */
     margin-left: 100px;
     position: absolute; /* Position it independently */
-    bottom: -20px; /* Move the logo down to extend below the menu bar */
+    bottom: 0px; /* Move the logo down to extend below the menu bar */
     left: 20px; /* Align the logo with the left side of the menu */
     z-index: 1; /* Ensure the logo is above the menu bar */
   }
